@@ -13,17 +13,18 @@ It is a complete package with scene cycle, sound and animation, options menu, sa
 
 /IMAGES AND VIDEO TO BE ADDED/
 Also some images and gifs to give a better impression: 
--Main Menu SS
--Game Scene SS
--Tutorial SS
--Options SS
+![Main Menu](https://github.com/OzgenKoklu/KitchenChaosSingleplayer/tree/main/ReadmeMedia/png/1.MainMenu.png)
+![Tutorial UI](https://github.com/OzgenKoklu/KitchenChaosSingleplayer/tree/main/ReadmeMedia/png/2.TutorialUI.png)
+![Gameplay SS](https://github.com/OzgenKoklu/KitchenChaosSingleplayer/tree/main/ReadmeMedia/png/3.Gameplay.png)
+![Settings UI](https://github.com/OzgenKoklu/KitchenChaosSingleplayer/tree/main/ReadmeMedia/png/4.SettingsUI.png)
+![Gameover](https://github.com/OzgenKoklu/KitchenChaosSingleplayer/tree/main/ReadmeMedia/png/5.Gameover.png)
+
+***GIFs
+![Game Flow](https://github.com/OzgenKoklu/KitchenChaosSingleplayer/tree/main/ReadmeMedia/gif/GameStartFlow.gif)
+![Delivery Success](https://github.com/OzgenKoklu/KitchenChaosSingleplayer/tree/main/ReadmeMedia/gif/DeliverySuccess.gif)
 
 Also a youtube link to show the entire game loop:
--Game start and play gif 
--chopping salad gif 
--Burger carying and delivering gif
-
-[yt link]
+[![Youtube Link](https://img.youtube.com/vi/92pFdvhzqCg/0.jpg)](https://youtu.be/92pFdvhzqCg)
 
 TLDR: I know most of you whos checking this has no time to read these walls of texts so I'll list what I've learned in a summarized way.
 -Properly use intermediate C# features and concepts: Events, Scriptable Objects, Interfaces, Inheritence, Delegates, Callbacks, Enums
