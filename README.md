@@ -1,137 +1,450 @@
-# CodeMonkey2023-Overcooked-Clone
+# Kitchen Chaos - Overcooked Clone
 
-/WORK IN PROGRESS/
-This is a learning project based on Code Monkey's 2023 complete tutorial. (https://www.youtube.com/watch?v=AmGSEH7QcDg)
-Note: I've built the entire game with multiplayer aspect, than I realized the source code got too cluttered with the multiplayer logic which needs completely different architechture,
-So I'm sharing this version of the game seperatly because I feel much familiarity with the syntax and the way its put together, the multiplayer project is in this link, the step by step process of making it can be observed in the commit history, I've also added descriptions on those commits.
-(Multiplayer Repo Link added here)
+<img src="Assets/_Assets/Textures/KitchenChaosLogo.png" alt="Kitchen Chaos Logo" width="550" class="center">
 
-Disclaimer: All assets were borrowed from Code Monkey and are not used for commercial use, this is a learning project and I've built this on my own under instructions by Code Monkey. 
+**ABOUT THE PROJECT:** This project is based on Code Monkey's step-by-step tutorial on how to create a complete game with clean coding and good programming practices. You can find it [here.](https://www.youtube.com/watch?v=AmGSEH7QcDg) 
+I built the entire game with a multiplayer aspect using Netcode for game objects. However, I later realized that the source code became too cluttered with the multiplayer logic, which requires a completely different architecture.
 
-ABOUT THE GAME: This is a small scale casual game that is highly inspired by OverCooked, where you have to deliver specific orders in a time limit. 
-It is a complete package with scene cycle, sound and animation, options menu, savable settings and key bindings.
+Therefore, I am sharing this version of the game separately because I am more familiar with the syntax and the way it is put together. The multiplayer project is available at this [link](https://github.com/OzgenKoklu/KitchenChaosNetcode), and the step-by-step process of creating the single-player version can be observed in the commit history. [This commit](https://github.com/OzgenKoklu/KitchenChaosNetcode/tree/a0367b347c1759463f828c40cf42f67ca7136407) is the main source of this repository, and I have also added descriptions to those commits if you are interested.
 
-/IMAGES AND VIDEO TO BE ADDED/
-Also some images and gifs to give a better impression: 
-![Main Menu](https://github.com/OzgenKoklu/KitchenChaosSingleplayer/tree/main/ReadmeMedia/png/1.MainMenu.png)
-![Tutorial UI](https://github.com/OzgenKoklu/KitchenChaosSingleplayer/tree/main/ReadmeMedia/png/2.TutorialUI.png)
-![Gameplay SS](https://github.com/OzgenKoklu/KitchenChaosSingleplayer/tree/main/ReadmeMedia/png/3.Gameplay.png)
-![Settings UI](https://github.com/OzgenKoklu/KitchenChaosSingleplayer/tree/main/ReadmeMedia/png/4.SettingsUI.png)
-![Gameover](https://github.com/OzgenKoklu/KitchenChaosSingleplayer/tree/main/ReadmeMedia/png/5.Gameover.png)
+**Disclaimer:** All assets were borrowed from Code Monkey and are not intended for commercial use. This is a learning project, and I've built it independently under instructions from Code Monkey. 
 
-***GIFs
-![Game Flow](https://github.com/OzgenKoklu/KitchenChaosSingleplayer/tree/main/ReadmeMedia/gif/GameStartFlow.gif)
-![Delivery Success](https://github.com/OzgenKoklu/KitchenChaosSingleplayer/tree/main/ReadmeMedia/gif/DeliverySuccess.gif)
+**ABOUT THE GAME:** This is a small-scale casual game heavily inspired by Overcooked, where the objective is to deliver specific orders within a time limit. It is a complete package, featuring scene cycles, sound and animation, an options menu, saveable settings, and customizable key bindings.
 
-Also a youtube link to show the entire game loop:
+---
+**TL;DR:** In short, what I've learned from this project:
+
+**1.** Properly utilize intermediate C# features and concepts: Events, Scriptable Objects, Interfaces, Inheritance, Delegates, Callbacks, Enums.
+
+**2.** Implement Observer and State Machine design patterns effectively.
+
+**3.** Embrace refactoring; architecture doesn't have to be perfect from the start, adapt as needed.
+
+**4.** Use methods in a versatile way, explore out parameters, and employ methods with various return types.
+
+**5.** Decoupling the logic, visuals, sounds, UI, and everything using classes that are eqipped with strong methods and events.
+
+---
+# Images
+
+Main Menu
+
+<img src="ReadmeMedia/png/1.MainMenu.png" width="450">
+
+Tutorial UI
+
+<img src="ReadmeMedia/png/2.TutorialUI.png" width="450">
+
+Gameplay 
+
+<img src="ReadmeMedia/png/3.Gameplay.png" width="450">
+
+Settings UI
+
+<img src="ReadmeMedia/png/4.SettingsUI.png" width="450">
+
+Gameover
+
+<img src="ReadmeMedia/png/5.Gameover.png" width="450">
+
+
+# GIFs
+
+Game Start Flow
+
+<img src="ReadmeMedia/gif/GameStartFlow.gif" width="450">
+
+Delivery Success
+
+<img src="ReadmeMedia/gif/DeliverySuccess.gif" width="450">
+
+# Youtube Video
+
+Entire game loop can be viewed in this youtube video:
+
 [![Youtube Link](https://img.youtube.com/vi/92pFdvhzqCg/0.jpg)](https://youtu.be/92pFdvhzqCg)
 
-TLDR: I know most of you whos checking this has no time to read these walls of texts so I'll list what I've learned in a summarized way.
--Properly use intermediate C# features and concepts: Events, Scriptable Objects, Interfaces, Inheritence, Delegates, Callbacks, Enums
--Properly implementing Observer and State Machine design patterns
--Not to be afraid of refactoring. You dont need to think the architecture from the get-go, you just refactor if you need to adapt a new system.
--Using methods in a more versatile way, out parameter, using methods withs all kinds of return types.
--Seperating Logic & Visuals & Sounds etc, properly equipping the classes
+---
 
+**Regarding my background and the significance of this course material:** 
 
+In 2022, I embarked on my journey as a game developer. The initial months were dedicated to familiarizing myself with the Unity Editor and learning about its various components. I completed Unity's official Jr pathway, gaining a basic understanding of game development. Subsequently, I created my first complete project during a boot camp, and you can find the repository [here](https://github.com/OzgenKoklu/Bootcamp_Project_UnityNo1).
 
-If you are more interested in me or my route: 
+While working on this project, I realized that despite my knowledge of individual components, constructing an architecture for a functional game is far more challenging than anticipated. At that time, I lacked knowledge about events or delegates, resorting to using public boolean flags extensively to control game mechanics. Managing 20 different bools to alter game states seemed inefficient. What about employing state machine design patterns or the Observer pattern to decouple the logic? I was merely crawling through the process.
 
+I became obsessed with 'best practices' and was paralyzed by my perfectionism for a couple of months. I attempted to learn more advanced topics, but the advice I received emphasized creating more prototypes. Unfortunately, the available tutorials were fragmented, offering 10-minute out-of-context guides on scriptable objects, interfaces, events, delegates, or design patterns, which did not contribute to a comprehensive understanding.
 
-About my background:
-Last year, I started my journey as a game developer, first couple of months was about getting used to the Unity Editor, learning about the different components etc. I've completed Unity's official Jr pathway, 
-and got a basic idea on how to make a game. Than I made my first complete project in a bootcamp, I actually have a repository of the said project here: (bootcamp project link) While making this project, I realized that I know all these components,
-but putting together an architecture for a working game is actually way harder than what I thought it would be. I had no idea on how to use events or delegates so I used public boolean flags everywhere to control game mechanics! 20 different bools to change the states of a game? 
-What about using state machine design pattern? Or Observer to decouple the logic? Well, I was just crawling at the time. Got obsessed with "best practice" and was paralised by my perfectionism for couple of months, 
-was trying to learn all those more advanced topics but everyone kept telling me I should make more prototypes. Also, there was no cohesive tutorials on these topics, those 10 minute out of context tutorials on scriptable objects, interfaces, events, delegates, or design patterns did not help me learning these complex topics, I needed something cohesive.
-I searched for source codes of complete projects, found some and definetly learned these topics better. But then comes this project, I think I've made the biggest progress in my coding while following this 10 hour course, 
-bacause I've seen a senior developer building systems from scratch, unlike what I thought about the process, Code monkey refactor the code as much as it is needed.
+In search of cohesive learning materials, I explored source codes of complete projects, gaining better insights into these complex topics. Then, I came across this project. Following a 10-hour course, I believe I made significant progress in my coding skills. Witnessing a senior developer build systems from scratch, contrary to my initial assumptions about the process, was eye-opening. Code Monkey consistently refactored the code as needed, which greatly contributed to my learning experience.
 
+---
 
+# More about what's covered in this project for those with more time:
 
-What I've learned from this building this project: 
-THhe most important & TLDR: 
-Most important stuff I've learned from this building this project:
+The project is a course project by Code Monkey, and it's curriculum can be found [here.](https://unitycodemonkey.com/kitchenchaoscourse.php) However, I want to revisit my own commits and create my own list of what I've learned:
 
-More About the course: 
-Code Monkey's website have course curriculum in this page: https://unitycodemonkey.com/kitchenchaoscourse.php
-Although, I also wanted to cover what I've learned by re-reading the commit history, which is in the multiplayer repo, not this one. 
-To revise the techniques and make a readme that is belonging to me. 
+# **What I've learned:** 
 
 Concepts, techniques and game development patterns used in this project:
-1) Global volume - Postprocessing effect 
-2) Player Input - old & new input system, InputActions, ReadValue, Interact.Performed
-3) Movement & positioning - Transform, Lerp, Slerp, vector normalization, .localposition
-4) Player Animation - Seperating Logic and visuals, animator usage (setbool, settriger)
-5) Raycast / Capsulecast - LayerMask - out RayCastHit 
-6) Cinemachine 
-7) Prefabs - Prefab variants 
-8) Unity Events - Events with extended arguments
-?subcribing and invoking
-?/ "xxx?.Invoke()" syntax 
-?
-9) Generics <T> - EventHandler<T>
-9) Using singleton Instance with
-10) Writing setter and getter in one line  { get; private set;  }
-11) Scriptable Objects - data holders, data for specific object (prefab, sprite, string) or 
-data for function inputs and outputs.
-12) Attributes - [CreateAssetMenu()]
-13) Interfaces - IKitchenObjectParent: Includes guidelines to be a kitchenobject parent, IHasProgress
-14) Methods with many different return types: 
-Bool, Transform, Class. Good for clean and strong code.
-Truly utilizing abstaction and making readable good clean code, etcc etc 
-player.GetKitchenObject().SetKitchenObjectParent(this);
-player.GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject)
- if (HasKitchenObject() && HasRecipeWithInput(GetKitchenObject().GetKitchenObjectSO()))
-15) Inheritence - virtual/override methods 
-16) UI - Worldspace UI, basic Show(), Hide() functions 
-17) enum usage - Switch/Case - State machine
-18) Simple Vector Maths for camera work - LookAt and transform.forward 
-19) Particle System
-20) how to use Interface from serializedfield
-21) Stack mechanic ? 
-22) Out Parameter in methods. (trygetplatekitchenObject)
-23) shadergraph basics (delivery counter texture) - details
-24) List comparison algorithms (deliveryManager, platecompletevisual)
-25) vertical layout group (Delivery manager, platecomplete uI)
-26) Sound Manager (Observer) 
-27) methods with two different argumants PlaySOund(5 args vs 4 args or something.
-28) Delegate - Lambda expression (MainManuUı) 
-29) Scene Manager Loader Loading (callback-isFirstupdate)***
-30) Player prefs 
-31) Options setting main menu scene manager loop
-32) Button Binding. ??? Araştır tekrar 
-33) Saving to JSON using playerprefs 
-34) Genel polish detayları 
+
+**1.** Global volume - Postprocessing effect 
+
+**2.** Player Input - old & new input system, InputActions, ReadValue, Interact.Performed
+
+**3.** Movement & positioning - Transform, Lerp, Slerp, vector normalization, .localposition
+
+**Code Snippet 1:** Getting a normalized vector from the new input system, from /Assets/Scripts/GameInput.cs
+
+```csharp
+public Vector2 GetMovementVectorNormalized()
+    {
+       Vector2 inputVector = playerInputActions.Player.Move.ReadValue<Vector2>();
+       inputVector = inputVector.normalized;
+       return inputVector;
+    }
+```
+
+**4.** Player Animation - Seperating Logic and visuals, animator usage (setbool, settriger)
+
+For separating logic and visuals, there are several other examples in this project, such as PlatesCounter.cs and PlatesCounterVisual.cs.
+
+**5.** Raycast / Capsulecast - LayerMask - out RayCastHit 
+
+**Code Snippet 2:** Raycast example from Assets/Scripts/Player.cs, the counter object ahead of the player will be selected using this logic.
+
+```csharp
+ private void HandleInteractions()
+    {
+        Vector2 inputVector = gameInput.GetMovementVectorNormalized();
+
+        Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
+
+        if (moveDir != Vector3.zero)
+        {
+            lastInteractionDir = moveDir;
+        }
+
+        float interactDistance = 2f;
+        if (Physics.Raycast(transform.position, lastInteractionDir, out RaycastHit raycastHit, interactDistance, countersLayerMask))
+        {
+            if (raycastHit.transform.TryGetComponent(out BaseCounter baseCounter))
+            {
+                //has clearcounter
+                if (baseCounter != selectedCounter)
+                {
+                    SetSelectedCounter(baseCounter);
+                }
+            }
+            else
+            {
+                SetSelectedCounter(null);
+            }
+        } else
+        {
+            SetSelectedCounter(null);
+        }
+    }
+```
+
+**6.** Prefabs - Prefab variants: All counters in this project are derived from base counter
+
+**7.** Events - How to subscribe/unsubscribe and trigger events. Events with extended arguments.
+
+SoundManager.cs extensively relies on events and can be considered an 'observer' pattern.
+
+**Code Snippet 3:** from Assets/Scripts/Player.cs, invoking an event with extra args via ("?.Invoke") syntax that provides a null check. 
+
+```csharp
+public event EventHandler<OnSelectedCounterChangedEventArgs> OnSelectedCounterChanged;
+public class OnSelectedCounterChangedEventArgs : EventArgs { public BaseCounter selectedCounter; };
+
+private void SetSelectedCounter(BaseCounter selectedCounter)
+    {
+        this.selectedCounter = selectedCounter;
 
 
+        OnSelectedCounterChanged?.Invoke(this, new OnSelectedCounterChangedEventArgs
+        {
+            selectedCounter = selectedCounter
+        });
+    }
+```
 
----Eklemeler yapılacak, gramer check / typo check / new additions from notes:
+**Code Snippet 4:** from Assets/Scripts/SelectedCounterVisual.cs, subscribers side, if the selectedCounter is the subsriber, it will show itself.
+
+```csharp
+private void Start()
+    {
+        Player.Instance.OnSelectedCounterChanged += Player_OnSelectedCounterChanged;
+    }
+	
+private void Player_OnSelectedCounterChanged(object sender, Player.OnSelectedCounterChangedEventArgs e)
+    {
+       if(e.selectedCounter == baseCounter)
+        {
+            Show();
+        }
+        else
+        {
+            Hide();
+        }
+    }	
+```
+
+**8.** Generics <T> implementation - EventHandler<T>
+
+**9.** Simple way to implement a Singleton Instance
+
+**Code Snippet 5:** from Assets/Scripts/Player.cs, writing public getter and private setter in one line for one line singleton implementation.
+
+```csharp
+public static Player Instance  { get; private set;  }
+```
+
+**10.** Scriptable Objects - data holders, data can anything: A list of audio files, list of other scriptable objects, list of prefabs, or data related to an asset, its prefab, string name, sprite icon etc. 
+
+**Code Snippet 6:** Different Scriptable object examples in this directory: Assets/Scripts/ScriptableObjects/
+
+```csharp
+//Data related with a significant kitchen object is held in the scriptable object for ease of access within scripts. 
+//CreateAssetMenu attribute provides right-click>create >scriptableObject option for Unity Editor.
+[CreateAssetMenu()]
+public class KitchenObjectSO : ScriptableObject
+{
+    public Transform prefab;
+    public Sprite sprite;
+    public string objectName;
+}
+
+//audioclips were stored in this scriptable object to be used by sound manager script. 
+//This approach is ideal because if a new audio is added to the list,
+//just updating the SO would update it for every other script that uses it. 
+[CreateAssetMenu()]
+public class AudioClipRefsSO : ScriptableObject
+{
+    public AudioClip[] chop;
+    public AudioClip[] deliveryFail;
+    public AudioClip[] deliverySuccess;
+    public AudioClip[] footstep;
+    public AudioClip[] objectDrop;
+    public AudioClip[] objectPickup;
+    public AudioClip stoveSizzle;
+    public AudioClip[] trash;
+    public AudioClip[] warning;
+}
+
+// frying recipe was for stove counter where we used it to access and load to the fried objects prefab after frying is done
+[CreateAssetMenu()]
+public class FryingRecipeSO : ScriptableObject
+{
+
+    public KitchenObjectSO input;
+    public KitchenObjectSO output;
+    public float fryingTimerMax;
+
+}
+```
+
+**11.** Interfaces - Including guidelines on how to be something, anything! Like a Kitchen Object Parent(?), or to Have Progress to show.
+
+**Code Snippet 6:** Different Interface examples in this code base from Assets/Scripts/
+
+```csharp
+//Every kitchen object parent should have these functions, they can have their own implementations but they need these
+public interface IKitchenObjectParent
+{
+    public Transform GetKitchenObjectFollowTransform();
+
+    public void SetKitchenObject(KitchenObject kitchenObject);
+
+    public KitchenObject GetKitchenObject();
+
+    public void ClearKitchenObject();
+    public bool HasKitchenObject();
+}
+//Anyhing that uses a UI image progress bar and display progress adapt this interface, this interface just holds an event and its EventArgs
+public interface IHasProgress 
+{
+    public event EventHandler<OnProgressChangedEventArgs> OnProgressChanged;
+    public class OnProgressChangedEventArgs : EventArgs
+    {
+        public float progressNormalized;
+    }
+}
+```
+
+**Note:** You can't use [SerializeField] for Objects that have specific interface, but you can [SerializeField] the GameObject and use .GetComponent<T>() to reach the Interface.
+
+**12.** Stronger methods with many different return types and out parameter: 
+
+As a beginner, I often used 'void' methods, primarily employing them to modify variables. This approach led to spaghetti logic and code that lacked cleanliness. 
+In my opinion, this tendency is influenced by the way these concepts are typically presented in beginner tutorials.
+
+We have utilized numerous methods in this project that return various types such as Bool, Transform, and Class. While it's not possible to showcase all of them in a snippet, I want to illustrate the structure of this code.
+
+Additionally, multiple versions of the PlaySound() method, differing in their argument counts, have been implemented in SoundManager.cs.
+
+**Code Snippet 7:**  HasKitchenObject() returns a bool, GetKitchenObject returns the KitchenObject of interest, and we execute even more logic from there onward all thanks to great methods with all sorts of return types.
+
+```csharp
+    public class DeliveryCounter : BaseCounter
+	{
+	//...
+    public override void Interact(Player player)
+    {
+	if (player.HasKitchenObject())
+    {
+            if (player.GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject))
+                //only accepts plates (plate is a kitchen object) 
+
+                DeliveryManager.Instance.DeliverRecipe(plateKitchenObject);
+            player.GetKitchenObject().DestroySelf();
+    }
+	}
+	}
+	
+	public class KitchenObject : MonoBehaviour
+    {
+	//...
+	public bool TryGetPlate(out PlateKitchenObject plateKitchenObject)
+    {
+        if(this is PlateKitchenObject)
+        {
+            plateKitchenObject = this as PlateKitchenObject;
+            return true;
+        }else
+        {
+            plateKitchenObject = null;
+            return false;
+        }
+    }
+	}
+```
  
-ABSTRACT NOTES//
-onanycut(static method for no singleton object) 
+**13.** Inheritence - virtual/override methods  
+The only example of inheritance in this project (aside from MonoBehaviour, obviously) is applied in the base counter, with all other counters inheriting from this base counter. Before this project, I wasn't sure when to use interfaces and when to use inheritance, but now I understand a little bit better.
 
-( CuttingCounter cuttingCounter  = sender as CuttingCounter;) as keyword. 
-this is PlateKitchenObject syntax 
+We use inheritance when the classes belong to a similar category (like all being counters), and we use interfaces when the classes have similar functionality in some domains but are completely different entities (like a player GameObject and a counter, which can both have a kitchen object but are fundamentally different beings).
 
-Concepts: 
-1)Seperating logic & visuals
-Many examples in this project: PlatesCounter.cs/PlatesCounterVisual.cs 
+In our implementation, we provide every necessary method for every counter to have, such as setting the kitchenObject or getting the FollowTransform for kitchenObjects to sit on. Interfaces don't force any specific implementation; they simply state, 'Your class should have these methods, but implement them on your terms.' Inheritance adds some sophistication; it can dictate usage and/or provide customization options depending on how you use it.
 
-2)Decoupling logic (using events, different method return types)
-3)Static Classes or methods 
-5)Scriptable Objects (data holders) 
-5)Interfaces - how to use Interface from serializedfield
-6)Inheritence - BaseCounter > ClearCounter - ContainerCounter Etc. 
-7)Naming Convention. UI scripts end with UI etc.
-8)Strings are vulnarable. Usage of Const strings. 
-9)State machine - States stored in Enum
-10)Execution order Awake>start , update Late update
-11)Struct usage (as data holder / plateKitchenObjecVisual - Gameobject ) 
-12) 
+Since most counters have interact functions but perform completely different actions when interacting, we made those methods virtual so that inherited classes can override them however they want. For all the things that should work somewhat the same, we implemented them in the parent class.
+ 
+**14.** Enum usage - Switch/Case - State machine
 
+In this example below, the current state of the game is maintained through an enum. 
+The Update() method includes a switch statement that executes code based on the current state of the game.
+Inputs from the game or a timer can trigger logic to change the state, and these state changes are also notified to the subscribers of events. 
+This setup ensures a clean and decoupled game logic.
 
-Reference: 
-https://www.youtube.com/watch?v=AmGSEH7QcDg 
+**Code Snippet 8:** state machine implementation using enums in Assets/Scripts/KitchenGameManager.cs 
 
-/WORK IN PROGRESS/
+```csharp
+private enum State
+    {
+        WaitingToStart,
+        CountdownToStart,
+        GamePlaying,
+        GameOver,
+    }
+
+private State state;
+	
+private void Awake()
+    {
+        state = State.WaitingToStart;  
+    }
+
+private void GameInput_OnInteractAction(object sender, EventArgs e)
+    {
+        if(state == State.WaitingToStart)
+        {
+            state = State.CountdownToStart;
+            OnStateChanged?.Invoke(this, EventArgs.Empty);
+        }
+    }
+
+private void Update()
+    {
+        switch (state)
+        {
+            case State.WaitingToStart:   
+                break; 
+            
+            case State.CountdownToStart:
+                countdownToStartTimer -= Time.deltaTime;
+                if (countdownToStartTimer < 0f)
+                {
+                    state = State.GamePlaying;
+                    gamePlayingTimer = gamePlayingTimerMax;
+                    OnStateChanged?.Invoke(this, EventArgs.Empty);
+                }
+                break;
+
+            case State.GamePlaying:
+                gamePlayingTimer -= Time.deltaTime;
+                if (gamePlayingTimer < 0f)
+                {
+                    state = State.GameOver;
+                    OnStateChanged?.Invoke(this, EventArgs.Empty);
+                }
+
+                break; 
+            
+            case State.GameOver:
+                break;
+        }
+    }
+```
+
+Other examples of a state machine can be found in Assets/Scripts/LookAtCamera.cs and Assets/Scripts/Counters/StoveCounter.cs
+
+**15.** Shadergraph basics, used for delivery counters moving texture
+
+**16.** Better and managable UI with UI only scripts
+
+Event System integration that triggers basic Show() and Hide() functions make the UI implementations much easier.
+
+Vertical or horizontal layout groups and template copying logic for displaying lists of objects is practical. (PlateIconsUI.cs & DeliveryManagerUI.cs)
+
+**17.** Delegate - Lambda expression usage, 
+
+Particularly practical for designating UI buttons but can be used for any event. 
+
+**Code Snippet 9:** Lambda expression example in MainMenuUI.cs
+
+```csharp
+    [SerializeField] private Button playButton;
+    [SerializeField] private Button quitButton;
+	
+    private void Awake()
+    {
+        playButton.onClick.AddListener(() => {
+            Loader.Load(Loader.Scene.GameScene);
+        }); 
+        quitButton.onClick.AddListener(() => {
+            Application.Quit();
+        });
+    }
+```
+
+**18.** Player Prefs and saving as JSON 
+
+In this single-player build, we saved sound settings on player prefs and controller bindings to player prefs as JSON. (Can be found in SoundManager.cs and GameInput.cs)
+
+Key remapping also implements the new input system's function PerformInteractiveRebinding with the .OnComplete callback.
+
+**19.** List comparison algorithm (deliveryManager)
+
+DeliveryManager.cs's DeliverRecipe() method takes a plateKitchenObject and iterates through a list of RecipeSO objects (waitingRecipeSOList). For each RecipeSO in the list, it checks if the number of kitchen objects in that recipe matches the number of kitchen objects in a specified plateKitchenObject. 
+
+If the counts match, it then compares each kitchen object in the recipe with the corresponding kitchen objects in the plate. If all kitchen objects in the recipe are found in the plate, the code considers it a successful recipe delivery. In such a case, it removes the delivered recipe from the list, increments a counter (successfulRecipesAmout), and invokes events signaling that a recipe has been completed and successful. If no matching recipe is found, it logs a message indicating that the player did not deliver the correct recipe and invokes an event signaling recipe failure.
+
+**20.** Static Classes or events
+
+The Loader class is declared as static for ease of use among other scripts, and every singleton instance is static for ease of access. Additionally, some events on counters are declared as static events for easy subscription and unsubscription, especially considering the existence of multiple cutting counters, etc.
+
+Static data should be reset when the game is reloaded or when the player returns to the main menu. Therefore, we have implemented functions to reset the static events. These functions are organized in a main script named ResetStaticData.cs, which is responsible for calling them when needed."
+
+**21.** Struct usage
+
+The struct is employed as a data holder for pairs of plateKitchenObjectVisual and corresponding GameObject instances within the PlateCompleteVisual.cs script.
