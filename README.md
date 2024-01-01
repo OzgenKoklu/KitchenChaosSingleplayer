@@ -58,11 +58,15 @@ Delivery Success
 
 <img src="ReadmeMedia/gif/DeliverySuccess.gif" width="450">
 
-# Youtube Video
+# Video
 
-Entire game loop can be viewed in this youtube video:
+The entire game loop can be viewed in this video:
 
-[![Youtube Link](https://img.youtube.com/vi/92pFdvhzqCg/0.jpg)](https://youtu.be/92pFdvhzqCg)
+
+https://github.com/OzgenKoklu/KitchenChaosSingleplayer/assets/29312226/b1e5cca2-767a-4134-9ffc-c316cbde0b95
+
+
+There's also a YouTube [link.](https://youtu.be/92pFdvhzqCg)
 
 ---
 
